@@ -1,6 +1,6 @@
 <?php
 
-include("function.php");
+include("../function.php");
 
 print_r($_SESSION);
 
@@ -14,7 +14,7 @@ print_r($_SESSION);
 <body>
 
 
-Register Form
+
 <br>
 <?php if(isset($_SESSION['username'])and !empty($_SESSION['username']) ) 
 { ?>
@@ -26,7 +26,7 @@ Register Form
 
 <?php } ?>
 <br><br><br>
-
+<div style="text-align:center; font-size:30px; "> Admin Page</div >
 <div style="border:1px solid #888888">
 <table style="width:100%; cellspacing:0; cellpadding:0; text-align:center; background-color:aqua;"> <tr> <td><a href="index.php"> Home </a>  </td>
 <td> <a href="index.php">About Us  </a></td>
