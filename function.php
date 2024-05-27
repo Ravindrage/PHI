@@ -34,11 +34,18 @@ if(isset($_POST['signinform']) and !empty($_POST['signinform']))
 	{
 		header("Location:index.php");
 	}
-	
-	
-	
-	
 
+}
+
+print_r($_POST);
+
+if(isset($_POST['category_operat']) and !empty($_POST['category_operat']) ) 
+{
+	
+	$sql = "INSERT INTO category "."(category_name,parent_category) "."VALUES "."('".$_POST['category_name']."','".$_POST['parent_cat']."')";
+	$result = mysqli_query($con,$sql);  
+	
+     header("Location:admin/category.php");
 }
 
 	
