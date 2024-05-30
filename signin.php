@@ -3,6 +3,19 @@
 <link src= "style.css"> </link>
 <style>
 </style>
+<script>
+
+function submit1()
+{
+	document.getElementById('signin').submit();
+
+}
+
+</script>
+
+
+
+</head>
 <body>
 Login Page
 
@@ -10,7 +23,7 @@ Login Page
 
 <Input type="text" name="username" id="username">
 <br>
-<input type="password" name="pass" id="pass">
+<input type="password" name="pass" id="pass"  >
 <br>
 <input type="hidden" name="signinform" id="signinform" value="submitted">
 <br>

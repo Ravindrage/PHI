@@ -1,10 +1,4 @@
-<?php 
-include("../function.php");
 
-
-
-
-?>
 
 <?php
 
@@ -52,15 +46,26 @@ print_r($_SESSION);
 
 <?php 
 
+//echo '<pre>';
 $sql= "SELECT * FROM category  ";
+
 $result = mysqli_query($con,$sql);
-$check = mysqli_fetch_array($result);
-//print_r($check);
+/*$check = mysqli_fetch_array($result);
+print_r($check);
+$check_row  =  mysqli_fetch_row($result);
+print_r($check_row);
+*/
+
+//$check_assoc  =  mysqli_fetch_assoc($result);
+
 ?>
-<table>
-<?php foreach($check as $key=>$value )
+<table style=" width:100%" > 
+<tr><th> Id</th> <th> Category name</th> <th> Parent Category</th> <th> Action </th>
+<?php $i = 0; foreach($check_assoc  =  mysqli_fetch_assoc($result) as $key=>$value )
 { ?> 
-<tr> <td> <?php echo $value; ?> </td>  <td></td> <td></td> </tr>
+
+<tr><td><?php echo $i++; ?> </td> <td> <?php echo $value; ?> </td>  <td>  <?php echo $value; ?></td> 
+<td><a href="category_operat.php">edit </a> &nbsp;  <a href="../function.php?del=category&id=<?php echo $value; ?>">delete </a></td> </tr>
    
 
 	<?php }

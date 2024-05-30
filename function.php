@@ -4,7 +4,7 @@ include("connection.php");
 if(isset($_POST['registerform']) and !empty($_POST['registerform']))
 {
 
-	 $sql = "INSERT INTO user "."(name,password) "."VALUES "."('".$_POST['username']."','".$_POST['pass']."')";
+	 $sql = "INSERT INTO user "."(name,password) "."VALUES "."('".$_POST['username']."','".md5($_POST['pass'])."')";
      $result = mysqli_query($con,$sql);  
 	 //print_r($result);
      header("Location:index.php?register=success");	 
@@ -46,6 +46,15 @@ if(isset($_POST['category_operat']) and !empty($_POST['category_operat']) )
 	$result = mysqli_query($con,$sql);  
 	
      header("Location:admin/category.php");
+}
+
+
+print_r($_REQUEST);
+if(isset($_GET['del']) and ( $_GET['del'] == "category"))
+{
+	  $sql = "delete from category where id='".$_GET['id']."'";
+	  $result = mysqli_query($con,$sql);
+      header("Location:admin/category.php");	  
 }
 
 	
