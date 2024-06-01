@@ -50,22 +50,16 @@ print_r($_SESSION);
 $sql= "SELECT * FROM category  ";
 
 $result = mysqli_query($con,$sql);
-/*$check = mysqli_fetch_array($result);
-print_r($check);
-$check_row  =  mysqli_fetch_row($result);
-print_r($check_row);
-*/
 
-//$check_assoc  =  mysqli_fetch_assoc($result);
 
 ?>
 <table style=" width:100%" > 
 <tr><th> Id</th> <th> Category name</th> <th> Parent Category</th> <th> Action </th>
-<?php $i = 0; foreach($check_assoc  =  mysqli_fetch_assoc($result) as $key=>$value )
+<?php $i = 0; while($check_assoc  =  mysqli_fetch_assoc($result))
 { ?> 
 
-<tr><td><?php echo $i++; ?> </td> <td> <?php echo $value; ?> </td>  <td>  <?php echo $value; ?></td> 
-<td><a href="category_operat.php">edit </a> &nbsp;  <a href="../function.php?del=category&id=<?php echo $value; ?>">delete </a></td> </tr>
+<tr><td><?php echo $i++; ?> </td> <td> <?php echo $check_assoc['id']; ?> </td>  <td>  <?php echo $check_assoc['category_name']; ?></td> 
+<td><a href="category_operat.php?command=edit&id=<?php echo $check_assoc['id']; ?>">edit </a> &nbsp;  <a href="../function.php?del=category&id=<?php echo $check_assoc['id']; ?>">delete </a></td> </tr>
    
 
 	<?php }

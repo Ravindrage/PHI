@@ -37,9 +37,9 @@ if(isset($_POST['signinform']) and !empty($_POST['signinform']))
 
 }
 
-print_r($_POST);
 
-if(isset($_POST['category_operat']) and !empty($_POST['category_operat']) ) 
+
+if(isset($_POST['category_operat']) and ($_POST['category_operat'])=="new_submitted" ) 
 {
 	
 	$sql = "INSERT INTO category "."(category_name,parent_category) "."VALUES "."('".$_POST['category_name']."','".$_POST['parent_cat']."')";
@@ -48,8 +48,21 @@ if(isset($_POST['category_operat']) and !empty($_POST['category_operat']) )
      header("Location:admin/category.php");
 }
 
+if(isset($_POST['category_operat']) and ($_POST['category_operat']=="edit_submitted") ) 
+{
+	
+    $name = $_POST['category_name'];	
+	$id = $_POST['edit_id'];
+	$sql = "update category set category_name =  '$name' where id= $id ";
+	$result = mysqli_query($con,$sql);  
+	header("Location:admin/category.php");
+	
+	
 
-print_r($_REQUEST);
+}
+
+
+
 if(isset($_GET['del']) and ( $_GET['del'] == "category"))
 {
 	  $sql = "delete from category where id='".$_GET['id']."'";

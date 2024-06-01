@@ -9,7 +9,27 @@ include("../function.php");
 <style>
 </style>
 <body>
+<?php
 
+//command=edit?id= echo $check_assoc['id']; 
+
+//$_get
+//$_POST
+//$_REQUEST
+
+if(isset($_REQUEST['command']) and ($_REQUEST['command']=="edit"))
+{
+	$id = $_REQUEST['id']  ;
+    $sql= "SELECT * FROM category WHERE id = $id ";
+	$result = mysqli_query($con,$sql);
+	$check_edit = mysqli_fetch_assoc($result);
+	print_r($check_edit);
+	
+}	
+
+
+
+?>
 
 
 <br>
@@ -50,7 +70,7 @@ $check = mysqli_fetch_array($result);
 
 <form action="../function.php" name="category" id="category" method="POST">
 Category Name 
-<Input type="text" name="category_name" id="category_name">
+<Input type="text" name="category_name" id="category_name" value="<?php echo $check_edit['category_name'] ?> ">
 <br>
 Parent Category
 <SELECT name="parent_cat" id="parent_cat">
@@ -66,7 +86,22 @@ Parent Category
 
  </select>
 <br>
-<input type="hidden" name="category_operat" id="category_operat" value="submitted">
+
+<?php
+
+if(isset($_REQUEST['command']) and ($_REQUEST['command']=="edit"))
+{ ?>
+<input type="hidden" name="category_operat" id="category_operat" value="edit_submitted">
+<input type="hidden" name="edit_id" id="edit_id" value=<?php echo $check_edit['id']; ?>>
+<?php }else{ ?>
+	<input type="hidden" name="category_operat" id="category_operat" value="new_submitted">
+<?php }
+
+?>
+
+
+
+
 <br>
 <input type="submit">
 
