@@ -16,9 +16,9 @@ echo $percent;
 //////////////-Index Array ////////
 /* -------------  Array Index array Example   -----------*/
 
-/*$index_marks = array(80,90,99,71,80) ; 
+$index_marks = array(80,90,99,71,80) ; 
 
-echo '<pre>' ; 
+/* echo '<pre>' ; 
 print_r($index_marks); 
 echo '</pre>' ; 
 
@@ -57,7 +57,7 @@ echo $multi_array[0][2] ;
 echo '</br>';
 echo $multi_array[1][1];
 echo '</br>';
-echo $multi_array[2][2];
+echo $multi_array[2]["lastname"];
 
 
 echo '</br>';
@@ -70,13 +70,6 @@ echo '</br>';
 $condition = Null ;
 
 
-
-
-
-
-
-
-
 //print
 //print_r
 
@@ -85,6 +78,82 @@ $condition = Null ;
 */
 
 
+
+
+class bike {
+	
+    $color ; 
+	$name	; 
+	
+	function setcolor($color2)
+	{
+		$this->color = $color2 ; 		
+	}
+	
+	function getname($name)
+	{
+		$this->name = $name
+	}
+		
+}
+
+
+
+
+
+
+
+
+
+define("Name","Hariom");
+const C_name = "Hariom Company"; 
+
+echo Name ; 
+
+echo '<br>';
+
+echo C_name; 
+
+echo '<br>';
+
+/* // 1) If condition */
+ //  Block Scope   {   } 
+ 
+   $index_marks[4] = 55;
+   
+   If($index_marks[4] >60 )
+   {
+	   echo "First Division"    ; 
+   }else
+   {
+	    echo "Grade B " ;
+   }	
+
+   echo '<br>';
+   
+   
+  foreach($index_marks as $key=>$value)
+  {
+	  echo $key." value is ".$value ;
+	  echo '<br>';
+  }
+  
+  function addition( $c, int $d)
+  {
+	  
+	return  $c = $c+$d ; 
+  }
+  
+  echo $c = "100" ;
+  
+   /* 2) Switch case 
+	  3) For Loop 
+	  4) while Loop 
+	  5) Do while 
+	  6) foreach Loop
+	  
+
+*/
 
 
 include("function.php");
