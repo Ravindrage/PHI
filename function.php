@@ -1,6 +1,9 @@
 <?php
 include("connection.php");
 
+
+print_r($_POST);
+
 if(isset($_POST['registerform']) and !empty($_POST['registerform']))
 {
 
@@ -9,6 +12,49 @@ if(isset($_POST['registerform']) and !empty($_POST['registerform']))
 	 //print_r($result);
      header("Location:index.php?register=success");	 
 
+}
+
+if(isset($_POST['products_operat']) and ($_POST['products_operat']=="new_submitted") )
+{
+	echo '<pre>';
+	print_r($_FILES);
+	echo '</pre>';
+	
+	$image_name = $_FILES['product_image']['name'] ;
+	$target_file = "images/$image_name";
+	
+	//move_uploaded_file($_POST['product_image']['tmp_name'], $target_file);
+	
+	
+	// Check if the file was uploaded via HTTP POST and the array key exists
+	if (isset($_FILES['product_image']) && is_uploaded_file($_FILES['product_image']['tmp_name'])) {
+		$image_name = $_FILES['product_image']['name'];
+		$target_file = "images/$image_name";
+
+	// Move the uploaded file to the target directory
+	if (move_uploaded_file($_FILES['product_image']['tmp_name'], $target_file)) {
+		echo "The file has been uploaded successfully.";
+	} else {
+		echo "Sorry, there was an error uploading your file.";
+	}
+	} else {
+	echo "No file was uploaded or there was an error with the upload.";
+	}
+
+	
+	
+	
+	
+	
+	
+	echo $sql = "INSERT INTO products "."(product_name,quantity,price,image) "."VALUES 
+	       "."('".$_POST['products_name']."',
+		    '".$_POST['products_quantity']."',
+			'".$_POST['products_price']."',
+			'".$_POST['product_image']."')";
+	$result = mysqli_query($con,$sql);
+	
+	//header("Location:products.php");	
 }
 
 
@@ -50,14 +96,12 @@ if(isset($_POST['category_operat']) and ($_POST['category_operat'])=="new_submit
 
 if(isset($_POST['category_operat']) and ($_POST['category_operat']=="edit_submitted") ) 
 {
-	
+
     $name = $_POST['category_name'];	
 	$id = $_POST['edit_id'];
 	$sql = "update category set category_name =  '$name' where id= $id ";
 	$result = mysqli_query($con,$sql);  
 	header("Location:admin/category.php");
-	
-	
 
 }
 

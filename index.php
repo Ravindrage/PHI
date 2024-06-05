@@ -16,7 +16,22 @@ echo $percent;
 //////////////-Index Array ////////
 /* -------------  Array Index array Example   -----------*/
 
-$index_marks = array(80,90,99,71,80) ; 
+$index_marks = array(80,90,99,71,80,90,100) ;
+
+$chunk = array_chunk($index_marks,2);
+/*
+echo '<pre>';
+print_r($chunk);
+echo '</pre>';
+*/
+
+//print_r(array_search(99,$index_marks));
+ 
+
+$second_array = array (71,99,23,45,45);
+
+$arrt = array_intersect( $index_marks,$second_array);
+
 
 /* echo '<pre>' ; 
 print_r($index_marks); 
@@ -80,10 +95,10 @@ $condition = Null ;
 
 
 
-class bike {
+/*class bike {
 	
-    $color ; 
-	$name	; 
+  public  $color ; 
+	public $name	; 
 	
 	function setcolor($color2)
 	{
@@ -96,7 +111,7 @@ class bike {
 	}
 		
 }
-
+*/
 
 
 
@@ -108,13 +123,7 @@ class bike {
 define("Name","Hariom");
 const C_name = "Hariom Company"; 
 
-echo Name ; 
 
-echo '<br>';
-
-echo C_name; 
-
-echo '<br>';
 
 /* // 1) If condition */
  //  Block Scope   {   } 
@@ -134,8 +143,8 @@ echo '<br>';
    
   foreach($index_marks as $key=>$value)
   {
-	  echo $key." value is ".$value ;
-	  echo '<br>';
+	 // echo $key." value is ".$value ;
+	 // echo '<br>';
   }
   
   function addition( $c, int $d)
