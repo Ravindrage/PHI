@@ -60,7 +60,7 @@ $result = mysqli_query($con,$sql);
 { ?> 
 
 <tr><td><?php echo $i++; ?> </td>
- <td> <img src="images/<?php echo $check_assoc['image']; ?>" style="height:40px;width:40px;" ><?php echo $check_assoc['id']; ?> </td> 
+ <td> <img src="../images/<?php echo $check_assoc['image']; ?>" style="height:40px;width:40px;" > </td> 
  <td> <?php echo $check_assoc['product_name']; ?> </td> 
  <td> <?php echo $check_assoc['quantity']; ?> </td> 
  <td> <?php echo $check_assoc['price']; ?> </td> 

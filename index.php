@@ -95,23 +95,56 @@ $condition = Null ;
 
 
 
-/*class bike {
+class bike {
 	
-  public  $color ; 
-	public $name	; 
+    public $color ; 
+	public $name; 
+	public $customer; 
+	
+	function __construct($customer2)
+	{
+		$this->customer = $customer2;
+	}
 	
 	function setcolor($color2)
 	{
 		$this->color = $color2 ; 		
 	}
 	
+	function getcolor()
+	{
+		echo $this->customer." Your Bike color is ".$this->color  ; 		
+	}
+	
 	function getname($name)
 	{
-		$this->name = $name
+		$this->name = $name;
 	}
 		
 }
-*/
+
+
+$objects = new bike("Hariom") ; 
+$objects->setcolor("Blue") ; 
+
+$object2 = new bike("Ravindra") ; 
+$object2->setcolor("White") ; 
+
+echo '<br>';
+echo $objects->getcolor();
+echo '<br>';
+echo $object2->getcolor();
+echo '<br>';
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -169,6 +202,16 @@ include("function.php");
 
 //print_r($_SESSION);
 
+
+
+
+$sql = "select * from User  " ; 
+
+
+
+
+
+
 ?>
 
 <html>
@@ -202,8 +245,42 @@ Register Form
 
 
 <tr> <div style="border:1px solid #888888">
-<td style="height:300px;border:1px solid #888888; background-color:#efefef;"> Category </div></td> 
-<td colspan="5" style="border:1px solid #888888; background-color:#efefef;"> Products </td> 
+<td style="height:300px;border:1px solid #888888; background-color:#efefef;">
+Category </div></td> 
+<td colspan="5" style="border:1px solid #888888; background-color:#efefef;">
+
+Products 
+<?php 
+$sql= "SELECT * FROM products  ";
+$result = mysqli_query($con,$sql);
+//$check = mysqli_fetch_array($result); ?>
+<table> <tr>
+<?php
+while($check = mysqli_fetch_assoc($result))
+{
+	echo '<td>
+	<img src="images/'.$check["image"].'" style="width:150px;height:150px">';
+	//print_r($check);
+	echo '<br>';
+	echo $check["product_name"] ; echo '<br>';
+	echo $check["price"] ; echo '<br>';
+	
+	echo 'Buy Now';echo '<br>';
+	echo 'Add to Cart'; echo '<br>';
+	echo '</td>';
+	
+}	
+?>
+</tr>
+</table>
+	
+	
+?>
+
+
+
+
+</td> 
 
 </tr>
 <tr> <td colspan="6"> <div style="border:1px solid #888888">Footer </div></td> <td></td> </tr>

@@ -20,8 +20,19 @@ if(isset($_POST['products_operat']) and ($_POST['products_operat']=="new_submitt
 	print_r($_FILES);
 	echo '</pre>';
 	
-	$image_name = $_FILES['product_image']['name'] ;
+	 $image_name = $_FILES['product_image']['name'] ;
 	$target_file = "images/$image_name";
+	
+	 $image_name.date('d-m-y');
+	
+	$filename = explode('.',$image_name);
+	
+	echo $finalimagename = $filename[0].'_'.date('d-m-y').'.'.$filename[1];
+	//print_r($filename);
+	
+	
+	
+	//exit;
 	
 	//move_uploaded_file($_POST['product_image']['tmp_name'], $target_file);
 	
@@ -29,7 +40,7 @@ if(isset($_POST['products_operat']) and ($_POST['products_operat']=="new_submitt
 	// Check if the file was uploaded via HTTP POST and the array key exists
 	if (isset($_FILES['product_image']) && is_uploaded_file($_FILES['product_image']['tmp_name'])) {
 		$image_name = $_FILES['product_image']['name'];
-		$target_file = "images/$image_name";
+		$target_file = "images/$finalimagename";
 
 	// Move the uploaded file to the target directory
 	if (move_uploaded_file($_FILES['product_image']['tmp_name'], $target_file)) {
@@ -51,10 +62,10 @@ if(isset($_POST['products_operat']) and ($_POST['products_operat']=="new_submitt
 	       "."('".$_POST['products_name']."',
 		    '".$_POST['products_quantity']."',
 			'".$_POST['products_price']."',
-			'".$_POST['product_image']."')";
+			'".$finalimagename."')";
 	$result = mysqli_query($con,$sql);
 	
-	//header("Location:products.php");	
+	header("Location:admin/products.php");	
 }
 
 
